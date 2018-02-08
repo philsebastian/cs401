@@ -63,3 +63,8 @@ a.disabled {
 .glyphicon-eye-open:before {
   content: '\e105';
 }
+
+.maindiv {
+	margin-top:55px;
+	margin-bottom:55px;
+}

@@ -19,4 +19,3 @@
 			echo $indentStr . '<link rel="stylesheet" href="' . $cssDir . '/' . $file . '">' . $newLineStr;
 		}
 	}
-?>

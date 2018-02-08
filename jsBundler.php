@@ -25,5 +25,3 @@
 			echo $indentStr . '<script type="text/javascript" src="' . $jsDir . '/' . $file . '"></script>';
 		}
 	}
-	
-?>

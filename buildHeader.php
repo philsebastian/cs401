@@ -22,9 +22,11 @@
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li id='home'><a href="#">Home</a></li>
-						<li id='contact'><a href="#">Contact</a></li>
-						<li class="dropdown">
+						<li id='home'><a href="">Home</a></li>
+						<li id='learn'><a href="">Learn</a></li>
+						<li id='teach'><a href="">Teach</a></li>
+
+						<!--<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="#">Action</a></li>
@@ -35,11 +37,11 @@
 								<li><a href="#">Separated link</a></li>
 								<li><a href="#">One more separated link</a></li>
 							</ul>
-						</li>
+						</li>-->
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-						<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>						
+						<li id="signup"><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+						<li id="login"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>						
 					</ul>
 				</div><!--/.nav-collapse -->
 			</div><!--/.container-fluid -->

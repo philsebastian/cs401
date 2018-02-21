@@ -22,13 +22,13 @@
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li id='home' <?php if ($thisPage=="home") { echo ' class="active"'; } ?>><a href="/cs401/">Home</a></li>
-						<li id='learn' <?php if ($thisPage=="learn") { echo ' class="active"'; } ?>><a href="/cs401/learn/">Learn</a></li>
-						<li id='teach'<?php if ($thisPage=="teach") { echo ' class="active"'; } ?>><a href="/cs401/teach/">Teach</a></li>
+						<li id='home' <?php if ($thisPage=="home") { echo ' class="active"'; } ?>><a href="/cs401/web/">Home</a></li>
+						<li id='learn' <?php if ($thisPage=="learn") { echo ' class="active"'; } ?>><a href="/cs401/web/learn/">Learn</a></li>
+						<li id='teach'<?php if ($thisPage=="teach") { echo ' class="active"'; } ?>><a href="/cs401/web/teach/">Teach</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li id="signup"<?php if ($thisPage=="signup") { echo ' class="active"'; } ?>><a href="/cs401/signup/"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-						<li id="login"<?php if ($thisPage=="login") { echo ' class="active"'; } ?>><a href="/cs401/login/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>						
+						<li id="signup"<?php if ($thisPage=="signup") { echo ' class="active"'; } ?>><a href="/cs401/web/signup/"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+						<li id="login"<?php if ($thisPage=="login") { echo ' class="active"'; } ?>><a href="/cs401/web/login/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>						
 					</ul>
 				</div><!--/.nav-collapse -->
 			</div><!--/.container-fluid -->

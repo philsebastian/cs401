@@ -1,7 +1,7 @@
 <?php
 	$thisPage = 'teach';
     $path = $_SERVER['DOCUMENT_ROOT'];
-    $path .= "/cs401/web/common/";
+    $path .= "/common/";
 	require_once($path."buildHeader.php");
 ?>
 	<div class="maindiv">

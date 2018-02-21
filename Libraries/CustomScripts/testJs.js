@@ -1,22 +1,18 @@
 'use strict';
 		$(document).ready(function () {
-			var thisFloat = parseFloat("10.1"); 
-			$("#advance").each(function () {
-				$(this).bind('click', (function() { 
-					var currValue = parseFloat($("#content")[0].innerText);
-					$("#content")[0].innerText = currValue + thisFloat; 
-				}));
-			});
-			
-			$("#home").click(function(){
-				$("#contents")[0].innerHTML('../mainpage.php');
-			});
-			
-			$('#contents')[0].innerHTML('../mainpage.php');
-			$('#home')[0].classList.add('active');
+			$("body").on('click', '.clickable',function() { 
+				var thisFloat = parseFloat("10.1"); 
+				var currValue = parseFloat($("#advance")[0].innerText);
+				$("#advance")[0].innerText = currValue + thisFloat; 
+			});					
+			LoadPage(".contents", "mainpage.html");
 		});
+		
+		function LoadPage(locationClass, url) {
+			$(locationClass).load(url);	
+		}		
 
-		// PHIL TODO -- i don't know that i will use dropdowns
+// PHIL TODO -- i don't know that i will use dropdowns
 		
 /* ========================================================================
  * Bootstrap: dropdown.js v3.3.7

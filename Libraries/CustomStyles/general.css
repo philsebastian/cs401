@@ -2,7 +2,7 @@ body {
 	background: lightgray; 
 }
 
-.content {
+.contents {
     background-color: #f8f8f8;
     border-color: #e7e7e7;
     border-radius: 4px;
@@ -55,13 +55,6 @@ a.disabled {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   margin-right: 4px;
-}
-/* Add icons you will be using below */
-.glyphicon-fire:before {
-  content: '\e104';
-}
-.glyphicon-eye-open:before {
-  content: '\e105';
 }
 
 .maindiv {

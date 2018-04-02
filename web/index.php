@@ -1,16 +1,18 @@
 <?php
-	$thisPage='home';
-	$path = $_SERVER['DOCUMENT_ROOT'];
-	$path .= "/common/";
-	require_once($path."buildHeader.php");
-?>
-	<div class="maindiv">
+error_reporting(E_ERROR);
 
-		<div class="container">
-			<h1>MAIN HOME PAGE</h1>		
-			<div class="contents"></div>
-		</div>
-	</div>
-<?php
-	require_once($path."buildFooter.php");
-?>
+define("NL", "\n");
+define("DT", "\t");
+define('DS', DIRECTORY_SEPARATOR);
+
+define('ROOT', $_SERVER["SERVER_NAME"]);
+
+define('BASE', __DIR__);
+define('COMMON', "common");
+define('CSS', COMMON . DS . "css");
+define('JS', COMMON . DS . "javascript");
+define('URLROOT', 'http://' . $_SERVER['HTTP_HOST'] . '/');
+define('STUDENTROOT', URLROOT . 'students/');
+define('TEACHERROOT', URLROOT . 'teachers/');
+
+require_once(BASE . DIRECTORY_SEPARATOR .'app' . DIRECTORY_SEPARATOR . 'init.php');

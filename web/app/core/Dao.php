@@ -3,14 +3,18 @@ session_start();
 
 class Dao
 {
-    private $host = "localhost";
-    private $db = "musicappdb";
-    private $user = "mlApp";
-    private $pass = "gIA41vz6qTzqA2Sv";
 
+	
     public function getConnection ()
     {
-        return new PDO("mysql:host={$this->host};dbname={$this->db}", $this->user, $this->pass);
+		$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+		$server = $url["host"];
+		$username = $url["user"];
+		$password = $url["pass"];
+		$db = substr($url["path"], 1);
+		echo "{$server} {$username} {$password} {$db}";
+        //return new PDO("mysql:host={$server};dbname={$db}", $username, $password);
     }
 
     public function GetPermissionLevels()

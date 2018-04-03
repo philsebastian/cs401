@@ -12,39 +12,75 @@ class Session
 
     public function validateLogin($username, $password)
     {
-        $query = $this->Dao->GetUserIdAndRole(['username' => $username, 'password' => $password]);
-        if (count($query) > 0)
+        try
         {
-            session_regenerate_id();
-            $_SESSION['username'] = $username;
-            $_SESSION['usernameId'] = $query['ID'];
-            $_SESSION['role'] = $query['permissionLevelId'];
+            $query = $this->Dao->GetUserIdAndRole(['username' => $username, 'password' => $password]);
+            if (count($query) > 0)
+            {
+                session_regenerate_id();
+                $_SESSION['username'] = $username;
+                $_SESSION['usernameId'] = $query[0]['ID'];
+                $_SESSION['role'] = $query[0]['permissionLevelId'];
 
-            $this->RedirectBasedOnRole();
+                $this->RedirectBasedOnRole();
+            }
+            else
+            {
+                $_SESSION['errorMessage'] = "Incorrect email address or password. Please try again.";
+                $_SESSION['presets']['username'] = $_POST['username'];
+                exit(header("Location: " . URLROOT . "login/"));
+            }
         }
-        else
+        catch (Exception $ex)
         {
             $_SESSION['errorMessage'] = "Incorrect email address or password. Please try again.";
             $_SESSION['presets']['username'] = $_POST['username'];
+            Logger::LogError("Session.validateLogin", "Error: {$ex->getMessage()}");
             exit(header("Location: " . URLROOT . "login/"));
         }
+
     }
 
     public function GetMyUserAccountInfo()
     {
-        return $this->Dao->GetUserAccountInfo($_SESSION['usernameId']);
+        $retArray = [];
+        try
+        {
+            $retArray = $this->Dao->GetUserAccountInfo($_SESSION['usernameId']);
+        }
+        catch (Exception $ex)
+        {
+            Logger::LogError("Session.GetMyUserAccountInfo", "Error: {$ex->getMessage()}");
+        }
+        return $retArray;
     }
 
     public function RedirectBasedOnRole()
     {
-        switch ($_SESSION['role'])
+        try
         {
-            case 1:
-                exit(header("Location: " . URLROOT . "students/account/"));
-            case 2:
-                exit(header("Location: " . URLROOT . "teachers/account/"));
-            case 3:
-                exit(header("Location: " . URLROOT . "students/account/"));
+            if (isset($_SESSION['role']))
+            {
+                switch ($_SESSION['role'])
+                {
+                    case 1:
+                        exit(header("Location: " . URLROOT . "students/account/"));
+                    case 2:
+                        exit(header("Location: " . URLROOT . "teachers/account/"));
+                    case 3:
+                        exit(header("Location: " . URLROOT . "students/account/"));
+                }
+            }
+            else
+            {
+                echo "Role not set";
+                die();
+            }
+        }
+        catch (Exception $ex)
+        {
+            Logger::LogError("Session.RedirectBasedOnRole", "Error: {$ex->getMessage()}");
+            exit(header("Location: " . URLROOT . "home"));
         }
     }
 
@@ -62,8 +98,10 @@ class Session
         }
         catch (Exception $ex)
         {
-            $_SESSION['errorMessage'] = "Error occurred in registration please try again";
+            $_SESSION['errorMessage'] = "Error occurred in registration. Please try again. Error: {$ex->getMessage}";
             $_SESSION['presets'] = $info;
+            Logger::LogError("Session.AddNewUser", "Error: {$ex->getMessage()}");
+
             exit(header("Location: " . URLROOT . "signup/"));
         }
     }

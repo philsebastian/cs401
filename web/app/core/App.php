@@ -107,13 +107,13 @@ class App
 
             Logger::LogTrace("App.OtherPages", "Starting parse of {$url[0]}.");
             $search = strtolower($url[0]);
-            $search = ucfirst($search);
+            //$search = ucfirst($search);
             unset($url[0]);
             $this->controller = $search . 'Account';
 
-            if(isset($url[1]) && $this->ControllerExists($search . ucfirst(strtolower($url[1]))))
+            if(isset($url[1]) && $this->ControllerExists($search . strtolower($url[1])))
             {
-                $controller = $url[1];
+                $controller = strtolower($url[1]);
                 $this->controller = $search . $url[1];
                 Logger::LogTrace("App.OtherPages", "Controller based on url: {$this->controller}.");
                 unset($url[1]);
@@ -121,7 +121,7 @@ class App
             else
             {
                 Logger::LogTrace("App.OtherPages", "Re-routing to default landing of: {$search}.");
-                exit(header("Location: " . URLROOT . $search . '/Account'));
+                exit(header("Location: " . URLROOT . $search . '/account'));
             }
 
             if(isset($url[2]) && method_exists($this->controller, $url[2]))

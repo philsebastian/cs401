@@ -37,7 +37,8 @@ class App
     {
         try
         {
-            Logger::LogTrace("App.GoToPage", "Initializing controller and method.");
+            Logger::LogTrace("App.GoToPage", "Initializing controller ({$this->controller}) and method ({$this->method}).");
+            $this->controller = strtolower($this->controller);
             $this->controller = new $this->controller();
             call_user_func_array([$this->controller, $this->method], array($this->params));
         }

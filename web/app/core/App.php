@@ -168,10 +168,13 @@ class App
     {
         if (file_exists(STUDENTSCONTROLLERS . DS . $name . '.php') || file_exists(TEACHERSCONTROLLERS . DS . $name . '.php'))
         {
+            Logger::LogDebug("App.ControllerExists", "Found controller: {$name}.");
+
             $result = true;
         }
         else
         {
+            Logger::LogDebug("App.ControllerExists", "Unable to find controller: {$name}.");
             $result = false;
         }
         return $result;

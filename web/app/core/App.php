@@ -103,6 +103,8 @@ class App
     {
         try
         {
+            Logger::LogDebug("App.OtherPages", "url: " . print_r($url, true));
+
             Logger::LogTrace("App.OtherPages", "Starting parse of {$url[0]}.");
             $search = strtolower($url[0]);
             $search = ucfirst($search);

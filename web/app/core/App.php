@@ -166,10 +166,11 @@ class App
 
     private function ControllerExists($name)
     {
+        Logger::LogTrace("App.ControllerExists", "Student search: " . STUDENTSCONTROLLERS . DS . $name . '.php; Teacher search: ' .  TEACHERSCONTROLLERS . DS . $name . '.php');
+
         if (file_exists(STUDENTSCONTROLLERS . DS . $name . '.php') || file_exists(TEACHERSCONTROLLERS . DS . $name . '.php'))
         {
             Logger::LogDebug("App.ControllerExists", "Found controller: {$name}.");
-
             $result = true;
         }
         else

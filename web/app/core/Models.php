@@ -10,12 +10,16 @@ class Models
         $this->modelName = $name;
     }
 
-    public function GetData()
+    public function GetData($content = [])
     {
+
+        $data = ['name' => $this->modelName, 'random' => rand(1, 10)];
         if (isset($_SESSION['presets']))
         {
+            $data = array_merge($data, $_SESSION['presets']);
             unset($_SESSION['presets']);
         }
-        return ['name' => $this->modelName, 'random' => rand(1, 10)];
+        $data = array_merge($data, $content);
+        return $data;
     }
 }

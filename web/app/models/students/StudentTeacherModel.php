@@ -4,14 +4,15 @@ class StudentTeacherModel extends StudentsModel
 {
     public function __construct()
     {
-        parent::__construct('student teacher');
+        parent::__construct('teachers');
     }
 
-    public function GetData()
+    public function GetData($content)
     {
-        $accountInfo = $this->User->GetMyUserAccountInfo($_SESSION['userId']);
-        $accountInfo = $accountInfo[0];
-        return (array_merge(parent::GetData(), $accountInfo));
+        $accountInfo = [];
+        //$accountInfo = $this->User->GetMyUserAccountInfo($_SESSION['userId']);
+        //$accountInfo = $accountInfo[0];
+        return (array_merge(parent::GetData($content), $accountInfo));
     }
 
 }

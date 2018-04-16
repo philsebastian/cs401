@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 class SignupModel extends MainModel
 {
@@ -7,16 +8,13 @@ class SignupModel extends MainModel
         parent::__construct('signup');
     }
 
-    public function GetData()
+    public function GetData($content)
     {
-        $data = parent::GetData();
+        $data = parent::GetData($content);
 
         $session = new Session();
         $permissions = ["permissions" => $session->GetPermissionLevels()];
         $data = array_merge($data, $permissions);
-
-        $content = array("contents" => ["main" . DS . "_signup"]);
-        $data = array_merge($data, $content);
 
         if (isset($_SESSION['presets']))
         {
